@@ -173,7 +173,7 @@ create table Usuario
 (
 	idusuario int primary key identity,
 	nombreusuario nvarchar(50),
-	contraseñausuario varbinary(8000),
+	contraseñausuario nvarchar(20),
 	idEmpleado int foreign key references Empleado (idempleado),
 	idpermiso int foreign key references Permiso (idpermiso),
 	estado bit

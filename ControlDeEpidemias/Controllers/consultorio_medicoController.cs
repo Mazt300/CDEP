@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ControlDeEpidemias.Models;
+using ControlDeEpidemias.Models.ViewModels;
 
 namespace ControlDeEpidemias.Controllers
 {
@@ -40,7 +41,13 @@ namespace ControlDeEpidemias.Controllers
         public ActionResult Create()
         {
             ViewBag.idconsultorio = new SelectList(db.Consultorio, "idconsultorio", "nombreconsultorio");
-            ViewBag.idmedico = new SelectList(db.Medico.Where(c => c.idempleado == c.Empleado.idempleado), "idempleado", "Nombre");
+            //ViewData["idmedico"]= new SelectList(db.Medico.Where(c => c.idempleado == c.Empleado.idempleado).Select(c => new MedicoViewModel() 
+            //{ idempleado = c.Empleado.idempleado, Nombre = c.Empleado.Nombre }), "idempleado", "Nombre");
+            //ViewData["idmedico"] = new SelectList(db.Medico.Where(c => c.idempleado == c.Empleado.idempleado).Select( c => 
+            //new {idempleado = c.idempleado, Nombre =c.Empleado.Nombre }), "idempleado", "Nombre");
+            ViewBag.idmedico = new SelectList(db.Medico.Where(c => c.idempleado == c.Empleado.idempleado).Select(c =>
+           new { idempleado = c.idempleado, Nombre = c.Empleado.Nombre }), "idempleado", "Nombre");
+
             return View();
         }
 
