@@ -1,0 +1,91 @@
+﻿@model ControlDeEpidemias.Models.Usuario
+
+@{
+    ViewBag.Title = "Modificar Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Modificar Usuario</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @*<h4>Usuario</h4>*@
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.idusuario)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nombreusuario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nombreusuario, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombreusuario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.contraseñausuario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.contraseñausuario, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.contraseñausuario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Empleado.idempleado, "Nombre Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("idEmpleado", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Empleado.idempleado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Empleado.idempleado, "Apellido Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("idEmpleado2", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Empleado.idempleado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.estado)
+                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.idpermiso, "Permiso De", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("idpermiso", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.idpermiso, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+    <div>
+        <button class=" btn btn-primary" type="button" style="color:white">
+            @Html.ActionLink("Volver", "Index",null, new {@style = "color:#ffffff;"  })
+        </button>
+    </div>
+
+}
+
+@*<script>
+
+    function(urldirection) {
+
+    }
+</script>*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

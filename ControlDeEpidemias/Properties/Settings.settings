@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ControlDeEpidemias.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CONEXION" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">source=DESKTOP-VL4T3FK\SERVIDOR_001;initial catalog=ControlDeEpidemias;persist security info=True;user id=Marcos;password=123;MultipleActiveResultSets=True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

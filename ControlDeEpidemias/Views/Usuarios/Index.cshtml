@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ControlDeEpidemias.Models.Usuario>
+
+@{
+    ViewBag.Title = "Lista De Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista De Usuarios</h2>
+
+<p>
+    <button  type="button" class="btn btn-primary" style="color:white"> 
+        @Html.ActionLink("Crear Usuario", "Create",null,new {@style="color:#ffffff;"})
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreusuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contraseñausuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Permiso.PermisoDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombreusuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.contraseñausuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Empleado.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Empleado.Apellido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Permiso.PermisoDe)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.estado)
+    </td>
+    <td>
+        <br />
+        <br />
+        <br />
+        <button type="button" class="btn btn-primary" style="color:white">
+            @Html.ActionLink("Ver Detalles", "Details", new { id = item.idusuario }, new { @style = "color:#ffffff;" })
+        </button>
+        <button type="button" class="btn btn-primary" style="color:white">
+            @Html.ActionLink("Modificar Usuario", "Edit", new { id = item.idusuario }, new { @style = "color:#ffffff;" })
+        </button>
+        <button type="button" class="btn btn-primary" style="color:white">
+            @Html.ActionLink("Eliminar Usuario", "Delete", new { id = item.idusuario }, new { @style = "color:#ffffff;" })
+        </button>
+    </td>
+</tr>
+}
+
+</table>

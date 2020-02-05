@@ -1,0 +1,43 @@
+﻿@model ControlDeEpidemias.Models.sector_consultorio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>sector_consultorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultorio.nombreconsultorio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultorio.nombreconsultorio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sector.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sector.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idsector_consultorio }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

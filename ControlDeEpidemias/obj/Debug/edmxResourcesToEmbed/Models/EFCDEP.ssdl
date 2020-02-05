@@ -1,0 +1,672 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ControlDeEpidemiasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="clasificacion_paciente_epidemia">
+    <Key>
+      <PropertyRef Name="idclasificacion_paciente_epidemia" />
+    </Key>
+    <Property Name="idclasificacion_paciente_epidemia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idmedico" Type="int" />
+    <Property Name="idepidemia" Type="int" />
+    <Property Name="idpaciente" Type="int" />
+    <Property Name="nivelgravedad" Type="int" />
+    <Property Name="idsala" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Consultorio">
+    <Key>
+      <PropertyRef Name="idconsultorio" />
+    </Key>
+    <Property Name="idconsultorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreconsultorio" Type="nvarchar" MaxLength="20" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="consultorio_medico">
+    <Key>
+      <PropertyRef Name="idconsultorio_medico" />
+    </Key>
+    <Property Name="idconsultorio_medico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idconsultorio" Type="int" />
+    <Property Name="idmedico" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="detalle_receta_medica">
+    <Key>
+      <PropertyRef Name="iddetalle_receta_medica" />
+    </Key>
+    <Property Name="iddetalle_receta_medica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idreceta_medica" Type="int" />
+    <Property Name="idmedicamento" Type="int" />
+    <Property Name="dosis" Type="nvarchar" MaxLength="100" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="detalleExpediente">
+    <Key>
+      <PropertyRef Name="idDetalleExpediente" />
+    </Key>
+    <Property Name="idDetalleExpediente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idmedico" Type="int" />
+    <Property Name="idexamen" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="idempleado" />
+    </Key>
+    <Property Name="idempleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Identificacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ubicación" Type="nvarchar" MaxLength="200" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="enfermero">
+    <Key>
+      <PropertyRef Name="idenfermero" />
+    </Key>
+    <Property Name="idenfermero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idempleado" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="epidemia">
+    <Key>
+      <PropertyRef Name="idepidemia" />
+    </Key>
+    <Property Name="idepidemia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="200" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="Examen">
+    <Key>
+      <PropertyRef Name="idexamen" />
+    </Key>
+    <Property Name="idexamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="idordenexamen" Type="int" />
+    <Property Name="idLaboratorio" Type="int" />
+    <Property Name="idmedico" Type="int" />
+    <Property Name="FechaRealizacion" Type="datetime" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="expediente">
+    <Key>
+      <PropertyRef Name="idexpediente" />
+    </Key>
+    <Property Name="idexpediente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idpaciente" Type="int" />
+    <Property Name="codigo" Type="nvarchar" MaxLength="50" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Laboratorio">
+    <Key>
+      <PropertyRef Name="idlaboratorio" />
+    </Key>
+    <Property Name="idlaboratorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+    <Property Name="idenfermero" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="medicamento">
+    <Key>
+      <PropertyRef Name="idmedicamento" />
+    </Key>
+    <Property Name="idmedicamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+    <Property Name="presentacion" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Medico">
+    <Key>
+      <PropertyRef Name="idmedico" />
+    </Key>
+    <Property Name="idmedico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idempleado" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="OrdenDeExamen">
+    <Key>
+      <PropertyRef Name="idOrdenDeExamen" />
+    </Key>
+    <Property Name="idOrdenDeExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idpaciente" Type="int" />
+    <Property Name="fechaorden" Type="datetime" />
+    <Property Name="idmedico" Type="int" />
+    <Property Name="estado" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="paciente">
+    <Key>
+      <PropertyRef Name="idpaciente" />
+    </Key>
+    <Property Name="idpaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="identificacion" Type="nvarchar" MaxLength="20" />
+    <Property Name="ubicacion" Type="nvarchar" MaxLength="200" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Permiso">
+    <Key>
+      <PropertyRef Name="idpermiso" />
+    </Key>
+    <Property Name="idpermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PermisoDe" Type="nvarchar" MaxLength="50" />
+    <Property Name="ver" Type="bit" />
+    <Property Name="guardar" Type="bit" />
+    <Property Name="modificar" Type="bit" />
+    <Property Name="elimiar" Type="bit" />
+  </EntityType>
+  <EntityType Name="receta_medica">
+    <Key>
+      <PropertyRef Name="idreceta_medica" />
+    </Key>
+    <Property Name="idreceta_medica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idmedico" Type="int" />
+    <Property Name="idpaciente" Type="int" />
+    <Property Name="observaciones" Type="nvarchar" MaxLength="400" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Sala">
+    <Key>
+      <PropertyRef Name="idsala" />
+    </Key>
+    <Property Name="idsala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="200" />
+    <Property Name="capacidad" Type="int" />
+    <Property Name="abarcado" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="sector">
+    <Key>
+      <PropertyRef Name="idsector" />
+    </Key>
+    <Property Name="idsector" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="sector_consultorio">
+    <Key>
+      <PropertyRef Name="idsector_consultorio" />
+    </Key>
+    <Property Name="idsector_consultorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idsector" Type="int" />
+    <Property Name="idconsultorio" Type="int" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreusuario" Type="nvarchar" MaxLength="50" />
+    <Property Name="contraseñausuario" Type="nvarchar" MaxLength="20" />
+    <Property Name="idEmpleado" Type="int" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="idpermiso" Type="int" />
+  </EntityType>
+  <Association Name="FK__clasifica__idepi__68487DD7">
+    <End Role="epidemia" Type="Self.epidemia" Multiplicity="0..1" />
+    <End Role="clasificacion_paciente_epidemia" Type="Self.clasificacion_paciente_epidemia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="epidemia">
+        <PropertyRef Name="idepidemia" />
+      </Principal>
+      <Dependent Role="clasificacion_paciente_epidemia">
+        <PropertyRef Name="idepidemia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__clasifica__idmed__6754599E">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="clasificacion_paciente_epidemia" Type="Self.clasificacion_paciente_epidemia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idmedico" />
+      </Principal>
+      <Dependent Role="clasificacion_paciente_epidemia">
+        <PropertyRef Name="idmedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__clasifica__idpac__693CA210">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="0..1" />
+    <End Role="clasificacion_paciente_epidemia" Type="Self.clasificacion_paciente_epidemia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="idpaciente" />
+      </Principal>
+      <Dependent Role="clasificacion_paciente_epidemia">
+        <PropertyRef Name="idpaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__clasifica__idsal__6A30C649">
+    <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
+    <End Role="clasificacion_paciente_epidemia" Type="Self.clasificacion_paciente_epidemia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="idsala" />
+      </Principal>
+      <Dependent Role="clasificacion_paciente_epidemia">
+        <PropertyRef Name="idsala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__consultor__idmed__46E78A0C">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="consultorio_medico" Type="Self.consultorio_medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idmedico" />
+      </Principal>
+      <Dependent Role="consultorio_medico">
+        <PropertyRef Name="idmedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__detalle_r__idmed__5535A963">
+    <End Role="medicamento" Type="Self.medicamento" Multiplicity="0..1" />
+    <End Role="detalle_receta_medica" Type="Self.detalle_receta_medica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medicamento">
+        <PropertyRef Name="idmedicamento" />
+      </Principal>
+      <Dependent Role="detalle_receta_medica">
+        <PropertyRef Name="idmedicamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__detalle_r__idrec__5441852A">
+    <End Role="receta_medica" Type="Self.receta_medica" Multiplicity="0..1" />
+    <End Role="detalle_receta_medica" Type="Self.detalle_receta_medica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="receta_medica">
+        <PropertyRef Name="idreceta_medica" />
+      </Principal>
+      <Dependent Role="detalle_receta_medica">
+        <PropertyRef Name="idreceta_medica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__detalleEx__idexa__6E01572D">
+    <End Role="Examen" Type="Self.Examen" Multiplicity="0..1" />
+    <End Role="detalleExpediente" Type="Self.detalleExpediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Examen">
+        <PropertyRef Name="idexamen" />
+      </Principal>
+      <Dependent Role="detalleExpediente">
+        <PropertyRef Name="idexamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__detalleEx__idmed__6D0D32F4">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="detalleExpediente" Type="Self.detalleExpediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idmedico" />
+      </Principal>
+      <Dependent Role="detalleExpediente">
+        <PropertyRef Name="idmedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__enfermero__idemp__440B1D61">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="enfermero" Type="Self.enfermero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idempleado" />
+      </Principal>
+      <Dependent Role="enfermero">
+        <PropertyRef Name="idempleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Examen__idLabora__5CD6CB2B">
+    <End Role="Laboratorio" Type="Self.Laboratorio" Multiplicity="0..1" />
+    <End Role="Examen" Type="Self.Examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Laboratorio">
+        <PropertyRef Name="idlaboratorio" />
+      </Principal>
+      <Dependent Role="Examen">
+        <PropertyRef Name="idLaboratorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Examen__idmedico__5DCAEF64">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="Examen" Type="Self.Examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idmedico" />
+      </Principal>
+      <Dependent Role="Examen">
+        <PropertyRef Name="idmedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Examen__idordene__5BE2A6F2">
+    <End Role="OrdenDeExamen" Type="Self.OrdenDeExamen" Multiplicity="0..1" />
+    <End Role="Examen" Type="Self.Examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenDeExamen">
+        <PropertyRef Name="idOrdenDeExamen" />
+      </Principal>
+      <Dependent Role="Examen">
+        <PropertyRef Name="idordenexamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__idpac__60A75C0F">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="0..1" />
+    <End Role="expediente" Type="Self.expediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="idpaciente" />
+      </Principal>
+      <Dependent Role="expediente">
+        <PropertyRef Name="idpaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Laborator__idenf__4BAC3F29">
+    <End Role="enfermero" Type="Self.enfermero" Multiplicity="0..1" />
+    <End Role="Laboratorio" Type="Self.Laboratorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enfermero">
+        <PropertyRef Name="idenfermero" />
+      </Principal>
+      <Dependent Role="Laboratorio">
+        <PropertyRef Name="idenfermero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Medico__idemplea__412EB0B6">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idempleado" />
+      </Principal>
+      <Dependent Role="Medico">
+        <PropertyRef Name="idempleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenDeEx__idmed__59063A47">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="OrdenDeExamen" Type="Self.OrdenDeExamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idmedico" />
+      </Principal>
+      <Dependent Role="OrdenDeExamen">
+        <PropertyRef Name="idmedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenDeEx__idpac__5812160E">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="0..1" />
+    <End Role="OrdenDeExamen" Type="Self.OrdenDeExamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="idpaciente" />
+      </Principal>
+      <Dependent Role="OrdenDeExamen">
+        <PropertyRef Name="idpaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__receta_me__idmed__5070F446">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="receta_medica" Type="Self.receta_medica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idmedico" />
+      </Principal>
+      <Dependent Role="receta_medica">
+        <PropertyRef Name="idmedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__receta_me__idpac__5165187F">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="0..1" />
+    <End Role="receta_medica" Type="Self.receta_medica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="idpaciente" />
+      </Principal>
+      <Dependent Role="receta_medica">
+        <PropertyRef Name="idpaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sector_co__idcon__3C69FB99">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="0..1" />
+    <End Role="sector_consultorio" Type="Self.sector_consultorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="idconsultorio" />
+      </Principal>
+      <Dependent Role="sector_consultorio">
+        <PropertyRef Name="idconsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sector_co__idsec__3B75D760">
+    <End Role="sector" Type="Self.sector" Multiplicity="0..1" />
+    <End Role="sector_consultorio" Type="Self.sector_consultorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sector">
+        <PropertyRef Name="idsector" />
+      </Principal>
+      <Dependent Role="sector_consultorio">
+        <PropertyRef Name="idsector" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__idEmple__70DDC3D8">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idempleado" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_consultorio_medico_Consultorio">
+    <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="0..1" />
+    <End Role="consultorio_medico" Type="Self.consultorio_medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultorio">
+        <PropertyRef Name="idconsultorio" />
+      </Principal>
+      <Dependent Role="consultorio_medico">
+        <PropertyRef Name="idconsultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Permiso">
+    <End Role="Permiso" Type="Self.Permiso" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permiso">
+        <PropertyRef Name="idpermiso" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idpermiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_DesencriptarContraseñaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUsuario" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ControlDeEpidemiasModelStoreContainer">
+    <EntitySet Name="clasificacion_paciente_epidemia" EntityType="Self.clasificacion_paciente_epidemia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consultorio" EntityType="Self.Consultorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="consultorio_medico" EntityType="Self.consultorio_medico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalle_receta_medica" EntityType="Self.detalle_receta_medica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalleExpediente" EntityType="Self.detalleExpediente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="enfermero" EntityType="Self.enfermero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="epidemia" EntityType="Self.epidemia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Examen" EntityType="Self.Examen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="expediente" EntityType="Self.expediente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Laboratorio" EntityType="Self.Laboratorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medicamento" EntityType="Self.medicamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrdenDeExamen" EntityType="Self.OrdenDeExamen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="receta_medica" EntityType="Self.receta_medica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sala" EntityType="Self.Sala" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sector" EntityType="Self.sector" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sector_consultorio" EntityType="Self.sector_consultorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__clasifica__idepi__68487DD7" Association="Self.FK__clasifica__idepi__68487DD7">
+      <End Role="epidemia" EntitySet="epidemia" />
+      <End Role="clasificacion_paciente_epidemia" EntitySet="clasificacion_paciente_epidemia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__clasifica__idmed__6754599E" Association="Self.FK__clasifica__idmed__6754599E">
+      <End Role="Medico" EntitySet="Medico" />
+      <End Role="clasificacion_paciente_epidemia" EntitySet="clasificacion_paciente_epidemia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__clasifica__idpac__693CA210" Association="Self.FK__clasifica__idpac__693CA210">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="clasificacion_paciente_epidemia" EntitySet="clasificacion_paciente_epidemia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__clasifica__idsal__6A30C649" Association="Self.FK__clasifica__idsal__6A30C649">
+      <End Role="Sala" EntitySet="Sala" />
+      <End Role="clasificacion_paciente_epidemia" EntitySet="clasificacion_paciente_epidemia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__consultor__idmed__46E78A0C" Association="Self.FK__consultor__idmed__46E78A0C">
+      <End Role="Medico" EntitySet="Medico" />
+      <End Role="consultorio_medico" EntitySet="consultorio_medico" />
+    </AssociationSet>
+    <AssociationSet Name="FK__detalle_r__idmed__5535A963" Association="Self.FK__detalle_r__idmed__5535A963">
+      <End Role="medicamento" EntitySet="medicamento" />
+      <End Role="detalle_receta_medica" EntitySet="detalle_receta_medica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__detalle_r__idrec__5441852A" Association="Self.FK__detalle_r__idrec__5441852A">
+      <End Role="receta_medica" EntitySet="receta_medica" />
+      <End Role="detalle_receta_medica" EntitySet="detalle_receta_medica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__detalleEx__idexa__6E01572D" Association="Self.FK__detalleEx__idexa__6E01572D">
+      <End Role="Examen" EntitySet="Examen" />
+      <End Role="detalleExpediente" EntitySet="detalleExpediente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__detalleEx__idmed__6D0D32F4" Association="Self.FK__detalleEx__idmed__6D0D32F4">
+      <End Role="Medico" EntitySet="Medico" />
+      <End Role="detalleExpediente" EntitySet="detalleExpediente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__enfermero__idemp__440B1D61" Association="Self.FK__enfermero__idemp__440B1D61">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="enfermero" EntitySet="enfermero" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Examen__idLabora__5CD6CB2B" Association="Self.FK__Examen__idLabora__5CD6CB2B">
+      <End Role="Laboratorio" EntitySet="Laboratorio" />
+      <End Role="Examen" EntitySet="Examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Examen__idmedico__5DCAEF64" Association="Self.FK__Examen__idmedico__5DCAEF64">
+      <End Role="Medico" EntitySet="Medico" />
+      <End Role="Examen" EntitySet="Examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Examen__idordene__5BE2A6F2" Association="Self.FK__Examen__idordene__5BE2A6F2">
+      <End Role="OrdenDeExamen" EntitySet="OrdenDeExamen" />
+      <End Role="Examen" EntitySet="Examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__idpac__60A75C0F" Association="Self.FK__expedient__idpac__60A75C0F">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="expediente" EntitySet="expediente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Laborator__idenf__4BAC3F29" Association="Self.FK__Laborator__idenf__4BAC3F29">
+      <End Role="enfermero" EntitySet="enfermero" />
+      <End Role="Laboratorio" EntitySet="Laboratorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Medico__idemplea__412EB0B6" Association="Self.FK__Medico__idemplea__412EB0B6">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Medico" EntitySet="Medico" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenDeEx__idmed__59063A47" Association="Self.FK__OrdenDeEx__idmed__59063A47">
+      <End Role="Medico" EntitySet="Medico" />
+      <End Role="OrdenDeExamen" EntitySet="OrdenDeExamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenDeEx__idpac__5812160E" Association="Self.FK__OrdenDeEx__idpac__5812160E">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="OrdenDeExamen" EntitySet="OrdenDeExamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__receta_me__idmed__5070F446" Association="Self.FK__receta_me__idmed__5070F446">
+      <End Role="Medico" EntitySet="Medico" />
+      <End Role="receta_medica" EntitySet="receta_medica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__receta_me__idpac__5165187F" Association="Self.FK__receta_me__idpac__5165187F">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="receta_medica" EntitySet="receta_medica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sector_co__idcon__3C69FB99" Association="Self.FK__sector_co__idcon__3C69FB99">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="sector_consultorio" EntitySet="sector_consultorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sector_co__idsec__3B75D760" Association="Self.FK__sector_co__idsec__3B75D760">
+      <End Role="sector" EntitySet="sector" />
+      <End Role="sector_consultorio" EntitySet="sector_consultorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__idEmple__70DDC3D8" Association="Self.FK__Usuario__idEmple__70DDC3D8">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_consultorio_medico_Consultorio" Association="Self.FK_consultorio_medico_Consultorio">
+      <End Role="Consultorio" EntitySet="Consultorio" />
+      <End Role="consultorio_medico" EntitySet="consultorio_medico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Permiso" Association="Self.FK_Usuario_Permiso">
+      <End Role="Permiso" EntitySet="Permiso" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

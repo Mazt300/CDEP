@@ -1,0 +1,51 @@
+﻿@model ControlDeEpidemias.Models.OrdenDeExamen
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrdenDeExamen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaorden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaorden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.idmedico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medico.idmedico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paciente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paciente.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idOrdenDeExamen }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

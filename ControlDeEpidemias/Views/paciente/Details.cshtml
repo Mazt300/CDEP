@@ -1,0 +1,59 @@
+﻿@model ControlDeEpidemias.Models.paciente
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>paciente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ubicacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ubicacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idpaciente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
