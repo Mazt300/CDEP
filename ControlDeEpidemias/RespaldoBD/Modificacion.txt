@@ -1,0 +1,1 @@
+ViewBag.idEmpleado = new SelectList(db.Empleado.Select(c => new { idempleado = c.idempleado, Nombre = c.Nombre + " " + c.Apellido}), "idempleado", "Nombre");
