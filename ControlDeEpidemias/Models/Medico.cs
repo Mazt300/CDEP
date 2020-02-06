@@ -22,6 +22,7 @@ namespace ControlDeEpidemias.Models
             this.detalleExpediente = new HashSet<detalleExpediente>();
             this.Examen = new HashSet<Examen>();
             this.OrdenDeExamen = new HashSet<OrdenDeExamen>();
+            this.ordendetraslado = new HashSet<ordendetraslado>();
             this.receta_medica = new HashSet<receta_medica>();
         }
     
@@ -40,6 +41,8 @@ namespace ControlDeEpidemias.Models
         public virtual ICollection<Examen> Examen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrdenDeExamen> OrdenDeExamen { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ordendetraslado> ordendetraslado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<receta_medica> receta_medica { get; set; }
     }

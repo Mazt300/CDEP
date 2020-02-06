@@ -37,10 +37,12 @@ namespace ControlDeEpidemias.Models
         public virtual DbSet<epidemia> epidemia { get; set; }
         public virtual DbSet<Examen> Examen { get; set; }
         public virtual DbSet<expediente> expediente { get; set; }
+        public virtual DbSet<hospital> hospital { get; set; }
         public virtual DbSet<Laboratorio> Laboratorio { get; set; }
         public virtual DbSet<medicamento> medicamento { get; set; }
         public virtual DbSet<Medico> Medico { get; set; }
         public virtual DbSet<OrdenDeExamen> OrdenDeExamen { get; set; }
+        public virtual DbSet<ordendetraslado> ordendetraslado { get; set; }
         public virtual DbSet<paciente> paciente { get; set; }
         public virtual DbSet<Permiso> Permiso { get; set; }
         public virtual DbSet<receta_medica> receta_medica { get; set; }

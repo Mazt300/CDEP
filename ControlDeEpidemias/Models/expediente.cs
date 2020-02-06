@@ -14,11 +14,19 @@ namespace ControlDeEpidemias.Models
     
     public partial class expediente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public expediente()
+        {
+            this.detalleExpediente = new HashSet<detalleExpediente>();
+        }
+    
         public int idexpediente { get; set; }
         public Nullable<int> idpaciente { get; set; }
         public string codigo { get; set; }
         public Nullable<bool> estado { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<detalleExpediente> detalleExpediente { get; set; }
         public virtual paciente paciente { get; set; }
     }
 }

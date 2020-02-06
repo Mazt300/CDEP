@@ -40,6 +40,7 @@ namespace ControlDeEpidemias.Controllers
         public ActionResult Create()
         {
             ViewBag.idempleado = new SelectList(db.Empleado, "idempleado", "Nombre");
+            ViewBag.apellido = new SelectList(db.Empleado, "idempleado", "Apellido");
             return View();
         }
 

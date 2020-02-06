@@ -103,6 +103,7 @@ create table OrdenDeExamen
 	idOrdenDeExamen int primary key identity,
 	idpaciente int foreign key references paciente (idpaciente),
 	fechaorden datetime,
+	Codigo nvarchar(50),
 	idmedico int foreign key references medico (idmedico),
 	estado nvarchar(20)
 )
@@ -155,8 +156,29 @@ create table clasificacion_paciente_epidemia
 create table detalleExpediente
 (
 	idDetalleExpediente int primary key identity,
+	idpaciente int foreign key references paciente (idpaciente),
 	idmedico int foreign key references medico (idmedico),
 	idexamen int foreign key references examen (idexamen),
+	idExpediente int foreign key references expediente (idexpediente),
+	estado bit
+)
+
+create table hospital
+(
+	idhospital int primary key identity,
+	nombre nvarchar(100),
+	estado bit
+)
+
+create table ordendetraslado
+(
+	idordendetraslado int primary key identity,
+	idhospital int foreign key references hospital (idhospital),
+	idmedico int foreign key references medico (idmedico),
+	idpaciente int foreign key references paciente (idpaciente),
+	fechaordentraslado date,
+	fechatraslado date,
+	observaciones nvarchar(max),
 	estado bit
 )
 
@@ -173,7 +195,7 @@ create table Usuario
 (
 	idusuario int primary key identity,
 	nombreusuario nvarchar(50),
-	contraseñausuario nvarchar(20),
+	contraseñausuario varbinary(8000),
 	idEmpleado int foreign key references Empleado (idempleado),
 	idpermiso int foreign key references Permiso (idpermiso),
 	estado bit

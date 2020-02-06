@@ -40,6 +40,8 @@ namespace ControlDeEpidemias.Controllers
         public ActionResult Create()
         {
             ViewBag.idenfermero = new SelectList(db.enfermero, "idenfermero", "idenfermero");
+            ViewBag.Nombre_enfermero = new SelectList(db.enfermero.Where(c => c.idempleado == c.Empleado.idempleado).Select(c => new { idempleado = c.idempleado, Nombre = c.Empleado.Nombre }),"idempleado","Nombre");
+            ViewBag.Apellido_enfermero = new SelectList(db.enfermero.Where(c => c.idempleado == c.Empleado.idempleado).Select(c => new { idempleado = c.idempleado, Apellido = c.Empleado.Apellido }), "idempleado", "Apellido");
             return View();
         }
 

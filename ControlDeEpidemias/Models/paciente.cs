@@ -18,8 +18,10 @@ namespace ControlDeEpidemias.Models
         public paciente()
         {
             this.clasificacion_paciente_epidemia = new HashSet<clasificacion_paciente_epidemia>();
+            this.detalleExpediente = new HashSet<detalleExpediente>();
             this.expediente = new HashSet<expediente>();
             this.OrdenDeExamen = new HashSet<OrdenDeExamen>();
+            this.ordendetraslado = new HashSet<ordendetraslado>();
             this.receta_medica = new HashSet<receta_medica>();
         }
     
@@ -33,9 +35,13 @@ namespace ControlDeEpidemias.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<clasificacion_paciente_epidemia> clasificacion_paciente_epidemia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<detalleExpediente> detalleExpediente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<expediente> expediente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrdenDeExamen> OrdenDeExamen { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ordendetraslado> ordendetraslado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<receta_medica> receta_medica { get; set; }
     }

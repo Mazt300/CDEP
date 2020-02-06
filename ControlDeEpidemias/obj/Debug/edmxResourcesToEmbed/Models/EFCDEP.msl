@@ -51,6 +51,8 @@
           <ScalarProperty Name="idmedico" ColumnName="idmedico" />
           <ScalarProperty Name="idexamen" ColumnName="idexamen" />
           <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idpaciente" ColumnName="idpaciente" />
+          <ScalarProperty Name="idExpediente" ColumnName="idExpediente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -107,6 +109,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="hospital">
+      <EntityTypeMapping TypeName="ControlDeEpidemiasModel.hospital">
+        <MappingFragment StoreEntitySet="hospital">
+          <ScalarProperty Name="idhospital" ColumnName="idhospital" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Laboratorio">
       <EntityTypeMapping TypeName="ControlDeEpidemiasModel.Laboratorio">
         <MappingFragment StoreEntitySet="Laboratorio">
@@ -142,6 +153,20 @@
           <ScalarProperty Name="idpaciente" ColumnName="idpaciente" />
           <ScalarProperty Name="fechaorden" ColumnName="fechaorden" />
           <ScalarProperty Name="idmedico" ColumnName="idmedico" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ordendetraslado">
+      <EntityTypeMapping TypeName="ControlDeEpidemiasModel.ordendetraslado">
+        <MappingFragment StoreEntitySet="ordendetraslado">
+          <ScalarProperty Name="idordendetraslado" ColumnName="idordendetraslado" />
+          <ScalarProperty Name="idhospital" ColumnName="idhospital" />
+          <ScalarProperty Name="idmedico" ColumnName="idmedico" />
+          <ScalarProperty Name="idpaciente" ColumnName="idpaciente" />
+          <ScalarProperty Name="fechaordentraslado" ColumnName="fechaordentraslado" />
+          <ScalarProperty Name="fechatraslado" ColumnName="fechatraslado" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
           <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>

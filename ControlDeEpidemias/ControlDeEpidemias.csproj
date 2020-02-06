@@ -189,6 +189,9 @@
     <Compile Include="Models\expediente.cs">
       <DependentUpon>EFCDEP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\hospital.cs">
+      <DependentUpon>EFCDEP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Laboratorio.cs">
       <DependentUpon>EFCDEP.tt</DependentUpon>
     </Compile>
@@ -199,6 +202,9 @@
       <DependentUpon>EFCDEP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrdenDeExamen.cs">
+      <DependentUpon>EFCDEP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ordendetraslado.cs">
       <DependentUpon>EFCDEP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\paciente.cs">

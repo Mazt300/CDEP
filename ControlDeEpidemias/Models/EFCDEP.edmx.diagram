@@ -4,29 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bdf664d4dd0a4a3fa4edda3d2d592cb1" Name="Diagram1">
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.clasificacion_paciente_epidemia" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Consultorio" Width="1.5" PointX="6" PointY="21.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.consultorio_medico" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.detalle_receta_medica" Width="1.5" PointX="12.5" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.detalleExpediente" Width="1.5" PointX="10.75" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Empleado" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.enfermero" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.epidemia" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Examen" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.expediente" Width="1.5" PointX="5.25" PointY="27.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Laboratorio" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.medicamento" Width="1.5" PointX="10.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Medico" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.OrdenDeExamen" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.paciente" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Permiso" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.receta_medica" Width="1.5" PointX="10.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Sala" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.sector" Width="1.5" PointX="6" PointY="24.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.sector_consultorio" Width="1.5" PointX="8.25" PointY="21.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Usuario" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+      <Diagram DiagramId="0b240fc8f0a142df9e249061c423a4ec" Name="Diagram1">
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.clasificacion_paciente_epidemia" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Consultorio" Width="1.5" PointX="6" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.consultorio_medico" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.detalle_receta_medica" Width="1.5" PointX="10.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.detalleExpediente" Width="1.5" PointX="10.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Empleado" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.enfermero" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.epidemia" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Examen" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.expediente" Width="1.5" PointX="8.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.hospital" Width="1.5" PointX="8" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Laboratorio" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.medicamento" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Medico" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.OrdenDeExamen" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.ordendetraslado" Width="1.5" PointX="10.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.paciente" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Permiso" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.receta_medica" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Sala" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.sector" Width="1.5" PointX="6" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.sector_consultorio" Width="1.5" PointX="8.25" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ControlDeEpidemiasModel.Usuario" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__clasifica__idepi__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__clasifica__idmed__6754599E" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__clasifica__idpac__693CA210" ManuallyRouted="false" />
@@ -38,6 +40,8 @@
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__detalle_r__idrec__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__detalleEx__idexa__6E01572D" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__detalleEx__idmed__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlDeEpidemiasModel.FK_detalleExpediente_Expediente" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlDeEpidemiasModel.FK_detalleExpediente_paciente" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__enfermero__idemp__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__Medico__idemplea__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__Usuario__idEmple__70DDC3D8" ManuallyRouted="false" />
@@ -46,9 +50,12 @@
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__Examen__idmedico__5DCAEF64" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__Examen__idordene__5BE2A6F2" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__expedient__idpac__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlDeEpidemiasModel.FK__ordendetr__idhos__18EBB532" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__OrdenDeEx__idmed__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlDeEpidemiasModel.FK__ordendetr__idmed__19DFD96B" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__receta_me__idmed__5070F446" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__OrdenDeEx__idpac__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="ControlDeEpidemiasModel.FK__ordendetr__idpac__1AD3FDA4" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__receta_me__idpac__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK_Usuario_Permiso" ManuallyRouted="false" />
         <AssociationConnector Association="ControlDeEpidemiasModel.FK__sector_co__idsec__3B75D760" ManuallyRouted="false" />

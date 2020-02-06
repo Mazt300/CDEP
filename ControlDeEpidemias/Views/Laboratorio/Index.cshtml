@@ -16,31 +16,43 @@
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.estado)
+            @Html.DisplayNameFor(model => model.enfermero.Empleado.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.enfermero.Empleado.Nombre)
+            @Html.DisplayNameFor(model => model.enfermero.Empleado.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.enfermero.Empleado.Identificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.enfermero.Empleado.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idlaboratorio }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idlaboratorio }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idlaboratorio })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.enfermero.Empleado.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.enfermero.Empleado.Apellido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.enfermero.Empleado.Identificacion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.estado)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.idlaboratorio }) |
+        @Html.ActionLink("Details", "Details", new { id = item.idlaboratorio }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.idlaboratorio })
+    </td>
+</tr>
 }
 
 </table>

@@ -18,8 +18,12 @@ namespace ControlDeEpidemias.Models
         public Nullable<int> idmedico { get; set; }
         public Nullable<int> idexamen { get; set; }
         public Nullable<bool> estado { get; set; }
+        public Nullable<int> idpaciente { get; set; }
+        public Nullable<int> idExpediente { get; set; }
     
         public virtual Examen Examen { get; set; }
         public virtual Medico Medico { get; set; }
+        public virtual expediente expediente { get; set; }
+        public virtual paciente paciente { get; set; }
     }
 }

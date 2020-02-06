@@ -57,8 +57,12 @@
     <Property Name="idmedico" Type="Int32" />
     <Property Name="idexamen" Type="Int32" />
     <Property Name="estado" Type="Boolean" />
+    <Property Name="idpaciente" Type="Int32" />
+    <Property Name="idExpediente" Type="Int32" />
     <NavigationProperty Name="Examen" Relationship="Self.FK__detalleEx__idexa__6E01572D" FromRole="detalleExpediente" ToRole="Examen" />
     <NavigationProperty Name="Medico" Relationship="Self.FK__detalleEx__idmed__6D0D32F4" FromRole="detalleExpediente" ToRole="Medico" />
+    <NavigationProperty Name="expediente" Relationship="Self.FK_detalleExpediente_Expediente" FromRole="detalleExpediente" ToRole="expediente" />
+    <NavigationProperty Name="paciente" Relationship="Self.FK_detalleExpediente_paciente" FromRole="detalleExpediente" ToRole="paciente" />
   </EntityType>
   <EntityType Name="Empleado">
     <Key>
@@ -117,7 +121,17 @@
     <Property Name="idpaciente" Type="Int32" />
     <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="detalleExpediente" Relationship="Self.FK_detalleExpediente_Expediente" FromRole="expediente" ToRole="detalleExpediente" />
     <NavigationProperty Name="paciente" Relationship="Self.FK__expedient__idpac__60A75C0F" FromRole="expediente" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="hospital">
+    <Key>
+      <PropertyRef Name="idhospital" />
+    </Key>
+    <Property Name="idhospital" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="ordendetraslado" Relationship="Self.FK__ordendetr__idhos__18EBB532" FromRole="hospital" ToRole="ordendetraslado" />
   </EntityType>
   <EntityType Name="Laboratorio">
     <Key>
@@ -152,6 +166,7 @@
     <NavigationProperty Name="Empleado" Relationship="Self.FK__Medico__idemplea__412EB0B6" FromRole="Medico" ToRole="Empleado" />
     <NavigationProperty Name="Examen" Relationship="Self.FK__Examen__idmedico__5DCAEF64" FromRole="Medico" ToRole="Examen" />
     <NavigationProperty Name="OrdenDeExamen" Relationship="Self.FK__OrdenDeEx__idmed__59063A47" FromRole="Medico" ToRole="OrdenDeExamen" />
+    <NavigationProperty Name="ordendetraslado" Relationship="Self.FK__ordendetr__idmed__19DFD96B" FromRole="Medico" ToRole="ordendetraslado" />
     <NavigationProperty Name="receta_medica" Relationship="Self.FK__receta_me__idmed__5070F446" FromRole="Medico" ToRole="receta_medica" />
   </EntityType>
   <EntityType Name="OrdenDeExamen">
@@ -167,6 +182,22 @@
     <NavigationProperty Name="Medico" Relationship="Self.FK__OrdenDeEx__idmed__59063A47" FromRole="OrdenDeExamen" ToRole="Medico" />
     <NavigationProperty Name="paciente" Relationship="Self.FK__OrdenDeEx__idpac__5812160E" FromRole="OrdenDeExamen" ToRole="paciente" />
   </EntityType>
+  <EntityType Name="ordendetraslado">
+    <Key>
+      <PropertyRef Name="idordendetraslado" />
+    </Key>
+    <Property Name="idordendetraslado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idhospital" Type="Int32" />
+    <Property Name="idmedico" Type="Int32" />
+    <Property Name="idpaciente" Type="Int32" />
+    <Property Name="fechaordentraslado" Type="DateTime" Precision="0" />
+    <Property Name="fechatraslado" Type="DateTime" Precision="0" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="hospital" Relationship="Self.FK__ordendetr__idhos__18EBB532" FromRole="ordendetraslado" ToRole="hospital" />
+    <NavigationProperty Name="Medico" Relationship="Self.FK__ordendetr__idmed__19DFD96B" FromRole="ordendetraslado" ToRole="Medico" />
+    <NavigationProperty Name="paciente" Relationship="Self.FK__ordendetr__idpac__1AD3FDA4" FromRole="ordendetraslado" ToRole="paciente" />
+  </EntityType>
   <EntityType Name="paciente">
     <Key>
       <PropertyRef Name="idpaciente" />
@@ -178,8 +209,10 @@
     <Property Name="ubicacion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="estado" Type="Boolean" />
     <NavigationProperty Name="clasificacion_paciente_epidemia" Relationship="Self.FK__clasifica__idpac__693CA210" FromRole="paciente" ToRole="clasificacion_paciente_epidemia" />
+    <NavigationProperty Name="detalleExpediente" Relationship="Self.FK_detalleExpediente_paciente" FromRole="paciente" ToRole="detalleExpediente" />
     <NavigationProperty Name="expediente" Relationship="Self.FK__expedient__idpac__60A75C0F" FromRole="paciente" ToRole="expediente" />
     <NavigationProperty Name="OrdenDeExamen" Relationship="Self.FK__OrdenDeEx__idpac__5812160E" FromRole="paciente" ToRole="OrdenDeExamen" />
+    <NavigationProperty Name="ordendetraslado" Relationship="Self.FK__ordendetr__idpac__1AD3FDA4" FromRole="paciente" ToRole="ordendetraslado" />
     <NavigationProperty Name="receta_medica" Relationship="Self.FK__receta_me__idpac__5165187F" FromRole="paciente" ToRole="receta_medica" />
   </EntityType>
   <EntityType Name="Permiso">
@@ -393,6 +426,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_detalleExpediente_Expediente">
+    <End Role="expediente" Type="Self.expediente" Multiplicity="0..1" />
+    <End Role="detalleExpediente" Type="Self.detalleExpediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="expediente">
+        <PropertyRef Name="idexpediente" />
+      </Principal>
+      <Dependent Role="detalleExpediente">
+        <PropertyRef Name="idExpediente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_detalleExpediente_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="0..1" />
+    <End Role="detalleExpediente" Type="Self.detalleExpediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="idpaciente" />
+      </Principal>
+      <Dependent Role="detalleExpediente">
+        <PropertyRef Name="idpaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__enfermero__idemp__440B1D61">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
     <End Role="enfermero" Type="Self.enfermero" Multiplicity="*" />
@@ -489,6 +546,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__ordendetr__idhos__18EBB532">
+    <End Role="hospital" Type="Self.hospital" Multiplicity="0..1" />
+    <End Role="ordendetraslado" Type="Self.ordendetraslado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hospital">
+        <PropertyRef Name="idhospital" />
+      </Principal>
+      <Dependent Role="ordendetraslado">
+        <PropertyRef Name="idhospital" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__OrdenDeEx__idmed__59063A47">
     <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
     <End Role="OrdenDeExamen" Type="Self.OrdenDeExamen" Multiplicity="*" />
@@ -497,6 +566,18 @@
         <PropertyRef Name="idmedico" />
       </Principal>
       <Dependent Role="OrdenDeExamen">
+        <PropertyRef Name="idmedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ordendetr__idmed__19DFD96B">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="ordendetraslado" Type="Self.ordendetraslado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idmedico" />
+      </Principal>
+      <Dependent Role="ordendetraslado">
         <PropertyRef Name="idmedico" />
       </Dependent>
     </ReferentialConstraint>
@@ -521,6 +602,18 @@
         <PropertyRef Name="idpaciente" />
       </Principal>
       <Dependent Role="OrdenDeExamen">
+        <PropertyRef Name="idpaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ordendetr__idpac__1AD3FDA4">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="0..1" />
+    <End Role="ordendetraslado" Type="Self.ordendetraslado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="idpaciente" />
+      </Principal>
+      <Dependent Role="ordendetraslado">
         <PropertyRef Name="idpaciente" />
       </Dependent>
     </ReferentialConstraint>
@@ -572,10 +665,12 @@
     <EntitySet Name="epidemia" EntityType="Self.epidemia" />
     <EntitySet Name="Examen" EntityType="Self.Examen" />
     <EntitySet Name="expediente" EntityType="Self.expediente" />
+    <EntitySet Name="hospital" EntityType="Self.hospital" />
     <EntitySet Name="Laboratorio" EntityType="Self.Laboratorio" />
     <EntitySet Name="medicamento" EntityType="Self.medicamento" />
     <EntitySet Name="Medico" EntityType="Self.Medico" />
     <EntitySet Name="OrdenDeExamen" EntityType="Self.OrdenDeExamen" />
+    <EntitySet Name="ordendetraslado" EntityType="Self.ordendetraslado" />
     <EntitySet Name="paciente" EntityType="Self.paciente" />
     <EntitySet Name="Permiso" EntityType="Self.Permiso" />
     <EntitySet Name="receta_medica" EntityType="Self.receta_medica" />
@@ -628,6 +723,14 @@
       <End Role="Medico" EntitySet="Medico" />
       <End Role="detalleExpediente" EntitySet="detalleExpediente" />
     </AssociationSet>
+    <AssociationSet Name="FK_detalleExpediente_Expediente" Association="Self.FK_detalleExpediente_Expediente">
+      <End Role="expediente" EntitySet="expediente" />
+      <End Role="detalleExpediente" EntitySet="detalleExpediente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_detalleExpediente_paciente" Association="Self.FK_detalleExpediente_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="detalleExpediente" EntitySet="detalleExpediente" />
+    </AssociationSet>
     <AssociationSet Name="FK__enfermero__idemp__440B1D61" Association="Self.FK__enfermero__idemp__440B1D61">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="enfermero" EntitySet="enfermero" />
@@ -660,9 +763,17 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="expediente" EntitySet="expediente" />
     </AssociationSet>
+    <AssociationSet Name="FK__ordendetr__idhos__18EBB532" Association="Self.FK__ordendetr__idhos__18EBB532">
+      <End Role="hospital" EntitySet="hospital" />
+      <End Role="ordendetraslado" EntitySet="ordendetraslado" />
+    </AssociationSet>
     <AssociationSet Name="FK__OrdenDeEx__idmed__59063A47" Association="Self.FK__OrdenDeEx__idmed__59063A47">
       <End Role="Medico" EntitySet="Medico" />
       <End Role="OrdenDeExamen" EntitySet="OrdenDeExamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ordendetr__idmed__19DFD96B" Association="Self.FK__ordendetr__idmed__19DFD96B">
+      <End Role="Medico" EntitySet="Medico" />
+      <End Role="ordendetraslado" EntitySet="ordendetraslado" />
     </AssociationSet>
     <AssociationSet Name="FK__receta_me__idmed__5070F446" Association="Self.FK__receta_me__idmed__5070F446">
       <End Role="Medico" EntitySet="Medico" />
@@ -671,6 +782,10 @@
     <AssociationSet Name="FK__OrdenDeEx__idpac__5812160E" Association="Self.FK__OrdenDeEx__idpac__5812160E">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="OrdenDeExamen" EntitySet="OrdenDeExamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ordendetr__idpac__1AD3FDA4" Association="Self.FK__ordendetr__idpac__1AD3FDA4">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="ordendetraslado" EntitySet="ordendetraslado" />
     </AssociationSet>
     <AssociationSet Name="FK__receta_me__idpac__5165187F" Association="Self.FK__receta_me__idpac__5165187F">
       <End Role="paciente" EntitySet="paciente" />
