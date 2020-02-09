@@ -39,8 +39,9 @@ namespace ControlDeEpidemias.Controllers
         // GET: OrdenDeExamen/Create
         public ActionResult Create()
         {
-            ViewBag.idmedico = new SelectList(db.Medico, "idmedico", "idmedico");
-            ViewBag.idpaciente = new SelectList(db.paciente, "idpaciente", "nombre");
+            ViewBag.idmedico = new SelectList(db.Medico.Where(c => c.Empleado.idempleado == c.idempleado).Select(c => new { idmedico = c.idmedico, Nombre = c.Empleado.Nombre + "" + c.Empleado.Apellido }), "idmedico", "Nombre");
+            ViewBag.idpaciente = new SelectList(db.paciente.Select(c => new { idpaciente = c.idpaciente, Nombre = c.nombre + " " + c.apellido }), "idpaciente", "nombre");
+            ViewBag.FechaActual = System.DateTime.Now.Date.ToShortDateString();
             return View();
         }
 

@@ -135,6 +135,7 @@
     <Compile Include="Controllers\ExamenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LaboratorioController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MedicoController.cs" />
     <Compile Include="Controllers\OrdenDeExamenController.cs" />
     <Compile Include="Controllers\pacienteController.cs" />
@@ -367,9 +368,11 @@
     <Content Include="Views\paciente\Details.cshtml" />
     <Content Include="Views\paciente\Edit.cshtml" />
     <Content Include="Views\paciente\Index.cshtml" />
+    <Content Include="Views\Usuarios\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

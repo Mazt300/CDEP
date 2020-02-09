@@ -5,28 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Lista de Empleados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-primary">
+        @Html.ActionLink("Ingresar Empleado", "Create", null, new { @style = "color:#ffffff;" })
+    </button>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            <label class="control-label col-md-2">
+                Nombre
+            </label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Apellido)
+            <label class="control-label col-md-2">
+                Apellido
+            </label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Identificacion)
+            <label class="control-label col-md-2">
+                Cédula
+            </label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ubicación)
+            <label class="control-label col-md-2">
+                Ubicación
+            </label>
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.estado)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -44,13 +54,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.Ubicación)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.estado)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idempleado }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idempleado }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idempleado })
+            <button class="btn btn-primary">
+                @Html.ActionLink("Modificar", "Edit", new { id = item.idempleado}, new { @style = "Color:#FFFFFF;"})
+            </button>
+            <button class="btn btn-primary">
+                @Html.ActionLink("Ver Detalles", "Details", new { id = item.idempleado }, new { @style = "Color:#FFFFFF;"})
+            </button>
+            <button class="btn btn-primary">
+                @Html.ActionLink("Dar Baja", "Delete", new { id = item.idempleado }, new { @style = "Color:#FFFFFF;"})
+            </button>
         </td>
     </tr>
 }

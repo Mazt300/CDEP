@@ -74,7 +74,7 @@ namespace ControlDeEpidemias.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idempleado = new SelectList(db.Empleado, "idempleado", "Nombre", enfermero.idempleado);
+            ViewBag.idempleado = new SelectList(db.Empleado.Select(c => new { idempleado = c.idempleado, Nombre = c.Nombre + " " + c.Apellido }), "idempleado", "Nombre", enfermero.idempleado);
             return View(enfermero);
         }
 

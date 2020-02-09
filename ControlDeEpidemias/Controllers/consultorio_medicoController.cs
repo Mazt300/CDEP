@@ -46,7 +46,9 @@ namespace ControlDeEpidemias.Controllers
             //ViewData["idmedico"] = new SelectList(db.Medico.Where(c => c.idempleado == c.Empleado.idempleado).Select( c => 
             //new {idempleado = c.idempleado, Nombre =c.Empleado.Nombre }), "idempleado", "Nombre");
             ViewBag.idmedico = new SelectList(db.Medico.Where(c => c.idempleado == c.Empleado.idempleado).Select(c =>
-           new { idempleado = c.idempleado, Nombre = c.Empleado.Nombre }), "idempleado", "Nombre");
+           new { idempleado = c.idempleado, Nombre = c.Empleado.Nombre + " " + c.Empleado.Apellido }), "idempleado", "Nombre");
+            ViewBag.Cedula = new SelectList(db.Medico.Where(c => c.Empleado.idempleado == c.idempleado).Select(c =>
+          new { idempleado = c.idempleado, Identificacion = c.Empleado.Identificacion }), "idempleado", "Identificacion");
 
             return View();
         }

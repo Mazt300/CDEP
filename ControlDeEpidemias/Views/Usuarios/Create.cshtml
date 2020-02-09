@@ -33,30 +33,22 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.idEmpleado, "Nombre Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.idEmpleado, "Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("idEmpleado", null, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownList("Empleado", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.idEmpleado, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.idEmpleado, "Apellido Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.idEmpleado,"Cédula", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("apellido", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.idEmpleado, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.estado)
-                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+            <div class="col-md-10">
+                @Html.DropDownList("Cedula", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idEmpleado, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.idpermiso, "Permiso", htmlAttributes: new { @class = "control-label col-md-2" })

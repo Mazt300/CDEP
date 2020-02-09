@@ -36,11 +36,15 @@ namespace ControlDeEpidemias.Controllers
             return View(usuario);
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
         // GET: Usuarios/Create
         public ActionResult Create()
         {
-            ViewBag.idEmpleado = new SelectList(db.Empleado, "idempleado", "Nombre");
-            ViewBag.apellido = new SelectList(db.Empleado, "idempleado", "Apellido");
+            ViewBag.Empleado = new SelectList(db.Empleado.Select(c => new { idempleado = c.idempleado, Nombre = c.Nombre + " " + c.Apellido }), "idempleado", "Nombre");
+            //ViewBag.Cedula = new SelectList(db.Empleado.Select(c => new { Cedula = c.Identificacion }), "idempleado", "Identificacion");
             ViewBag.idpermiso = new SelectList(db.Permiso, "idpermiso", "PermisoDe");
             return View();
         }
